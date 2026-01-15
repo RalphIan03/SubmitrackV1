@@ -1,7 +1,7 @@
 @extends('layouts.loginLayout')
 
 @section('content')
-<body class="min-h-screen bg-gradient-to-br from-maroon-50 to-red-900 flex items-center justify-center px-4">
+<body class="min-h-screen bg-linear-to-br from-maroon-50 to-red-900 flex items-center justify-center px-4">
 
     <!-- Login Card -->
     <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">

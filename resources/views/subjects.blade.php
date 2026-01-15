@@ -6,15 +6,14 @@
     <!-- Header -->
     <div class="flex items-center justify-between">
         <div>
-            <h1 class="text-2xl font-bold text-maroon">User Management</h1>
+            <h1 class="text-2xl font-bold text-maroon">Subject Management</h1>
             <p class="text-gray-600 text-sm">
-                Manage system users, roles, and access.
+                Manage class subjects.
             </p>
         </div>
-
         <button onclick="openModal()"
             class="bg-maroon-500 text-white px-5 py-2 rounded-lg hover:bg-gold-500 hover:text-maroon transition">
-            + Add New User
+            + Add New Subject
         </button>
     </div>
 
@@ -24,10 +23,9 @@
         <table class="w-full text-sm">
             <thead class="bg-gray-100 text-gray-600">
                 <tr>
-                    <th class="px-4 py-3 text-left">Username</th>
-                    <th class="px-4 py-3 text-left">Faculty Name</th>
+                    <th class="px-4 py-3 text-left">Subject Code</th>
+                    <th class="px-4 py-3 text-left">Subject Name</th>
                     <th class="px-4 py-3 text-left">Department</th>
-                    <th class="px-4 py-3 text-left">Role</th>
                     <th class="px-4 py-3 text-center">Actions</th>
                 </tr>
             </thead>
@@ -36,11 +34,6 @@
                     <td class="px-4 py-3">jdelacruz</td>
                     <td class="px-4 py-3">Juan Dela Cruz</td>
                     <td class="px-4 py-3">IT Department</td>
-                    <td class="px-4 py-3">
-                        <span class="bg-gold/20 text-gold px-3 py-1 rounded-full text-xs font-medium">
-                            Faculty
-                        </span>
-                    </td>
                     <td class="px-4 py-3 text-center space-x-2">
                         <button class="text-blue-600 hover:underline">View</button>
                         <button class="text-maroon hover:underline">Edit</button>
@@ -52,11 +45,6 @@
                     <td class="px-4 py-3">msantos</td>
                     <td class="px-4 py-3">Maria Santos</td>
                     <td class="px-4 py-3">CS Department</td>
-                    <td class="px-4 py-3">
-                        <span class="bg-maroon/20 text-maroon px-3 py-1 rounded-full text-xs font-medium">
-                            Admin
-                        </span>
-                    </td>
                     <td class="px-4 py-3 text-center space-x-2">
                         <button class="text-blue-600 hover:underline">View</button>
                         <button class="text-maroon hover:underline">Edit</button>
@@ -67,17 +55,6 @@
         </table>
 
     </div>
-    @if($errors->any())
-    
-    <div class="bg-red-500 p-1 rounded-2xl">
-        <p class="my-2 text-white">Invalid input</p>
-        <ul>
-            @foreach($errors->all() as $error)
-            <li class="my-2 text-white">{{$error}}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
 </div>
 
 <!-- Add User Modal -->
@@ -87,23 +64,23 @@
     <div class="bg-white rounded-xl shadow-xl w-full max-w-lg p-6">
 
         <h2 class="text-xl font-bold text-maroon mb-4">
-            Add New User
+            Add New Subject
         </h2>
 
-        <form class="space-y-4" method="POST" action="{{route('adduser')}} " enctype="multipart/form-data">
-            @csrf
+        <form class="space-y-4">
+
             <!-- Username -->
             <div>
-                <label class="block text-sm font-medium">Username</label>
-                <input type="text" name="sys_username"
+                <label class="block text-sm font-medium">Subject Code</label>
+                <input type="text" name="sub_code"
                     class="w-full border rounded-lg px-4 py-2 focus:ring-gold focus:border-gold"
                     required>
             </div>
 
             <!-- Faculty Name -->
             <div>
-                <label class="block text-sm font-medium">Faculty Name</label>
-                <input type="text" name="sys_name"
+                <label class="block text-sm font-medium">Subject Name</label>
+                <input type="text" name="sub_name"
                     class="w-full border rounded-lg px-4 py-2 focus:ring-gold focus:border-gold"
                     required>
             </div>
@@ -111,31 +88,13 @@
             <!-- Department -->
             <div>
                 <label class="block text-sm font-medium">Department</label>
-                <select name="sys_dept" id="" class="w-full border rounded-lg px-4 py-2 focus:ring-gold focus:border-gold">
+                <select name="sub_department" id="" class="w-full border rounded-lg px-4 py-2 focus:ring-gold focus:border-gold">
                     <option value="DBA">DBA</option>
                     <option value="DTE">DTE</option>
                     <option value="DTP">DTP</option>
                     <option value="DAS">DAS</option>
                     <option value="DAE">DAE</option>
                     <option value="DHE">DHE</option>
-                </select>
-            </div>
-
-            <!-- Password -->
-            <div>
-                <label class="block text-sm font-medium">Password</label>
-                <input type="password" name="sys_password"
-                    class="w-full border rounded-lg px-4 py-2 focus:ring-gold focus:border-gold"
-                    required>
-            </div>
-
-            <!-- Role -->
-            <div>
-                <label class="block text-sm font-medium">Role</label>
-                <select name="sys_role"
-                    class="w-full border rounded-lg px-4 py-2 focus:ring-gold focus:border-gold">
-                    <option value="Faculty">Faculty</option>
-                    <option value="Admin">Admin</option>
                 </select>
             </div>
 
@@ -154,7 +113,6 @@
 
         </form>
     </div>
-
 </div>
 
 <!-- Modal Script -->

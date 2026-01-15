@@ -53,6 +53,10 @@
                     class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gold-500 hover:text-maroon-500 transition">
                     👥 Users
                 </a>
+                <a href="{{route('subjects')}}"
+                    class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gold-500 hover:text-maroon-500 transition">
+                    📓 Subjects
+                </a>
 
                 <a href="#"
                     class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gold-500 hover:text-maroon-500 transition">
