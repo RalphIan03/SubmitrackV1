@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\subjects;
 
-class subjectController extends Controller
+class subjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,15 @@ class subjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $subject = $request->validate([
+            'sub_code'=> 'required',
+            'sub_name'=> 'required',
+            'sub_dept'=> 'required'
+        ]);
+
+        subjects::create($subject);
+
+        return "hello";
     }
 
     /**

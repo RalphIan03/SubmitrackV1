@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->text('sub_code');
+            $table->text('sub_name');
+            $table->text('sub_dept');
         });
     }
 

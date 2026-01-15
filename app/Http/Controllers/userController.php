@@ -12,7 +12,9 @@ class userController extends Controller
      */
     public function index()
     {
-        $users = userCreate::all()->paginate(10);
+        $users = userCreate::orderby('sys_name', 'ASC')->paginate(10);
+        return view('users', ['userList' => $users]);
+
     }
 
     /**

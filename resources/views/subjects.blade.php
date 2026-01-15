@@ -67,8 +67,8 @@
             Add New Subject
         </h2>
 
-        <form class="space-y-4">
-
+        <form class="space-y-4" method="POST" action="{{route('addSubject')}}" enctype="multipart/form-data">
+            @csrf
             <!-- Username -->
             <div>
                 <label class="block text-sm font-medium">Subject Code</label>
@@ -88,7 +88,7 @@
             <!-- Department -->
             <div>
                 <label class="block text-sm font-medium">Department</label>
-                <select name="sub_department" id="" class="w-full border rounded-lg px-4 py-2 focus:ring-gold focus:border-gold">
+                <select name="sub_dept" id="" class="w-full border rounded-lg px-4 py-2 focus:ring-gold focus:border-gold">
                     <option value="DBA">DBA</option>
                     <option value="DTE">DTE</option>
                     <option value="DTP">DTP</option>
