@@ -12,7 +12,8 @@ class subjectsController extends Controller
      */
     public function index()
     {
-        //
+        $subjects = subjects::orderBy('sub_code', 'ASC')->paginate(10);
+        return view('subjects', ['subjects'=>$subjects]);
     }
 
     /**
@@ -36,7 +37,7 @@ class subjectsController extends Controller
 
         subjects::create($subject);
 
-        return "hello";
+        return redirect()->route('subjects');
     }
 
     /**

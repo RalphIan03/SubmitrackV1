@@ -14,9 +14,6 @@ Route::get('dashboard', function(){
 
 
 
-Route::get('subjects', function(){
-    return view('subjects');
-})->name('subjects');
 
 //userManagement
 Route::post('adduser', [userController::class,'store'])->name('adduser');
@@ -24,3 +21,5 @@ Route::get('users', [userController::class,'index'])->name('users');
 
 //subjectManagement
 Route::post('addSubject', [subjectsController::class, 'store'])->name('addSubject');
+Route::get('subjects', [subjectsController::class, 'index'])->name('subjects');
+

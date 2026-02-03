@@ -30,30 +30,27 @@
                 </tr>
             </thead>
             <tbody class="divide-y">
+                @forelse($subjects as $subject)
                 <tr>
-                    <td class="px-4 py-3">jdelacruz</td>
-                    <td class="px-4 py-3">Juan Dela Cruz</td>
-                    <td class="px-4 py-3">IT Department</td>
+                    <td class="px-4 py-3">{{$subject->sub_code}}</td>
+                    <td class="px-4 py-3">{{$subject->sub_name}}</td>
+                    <td class="px-4 py-3">{{$subject->sub_dept}}</td>
                     <td class="px-4 py-3 text-center space-x-2">
                         <button class="text-blue-600 hover:underline">View</button>
                         <button class="text-maroon hover:underline">Edit</button>
-                        <button class="text-red-600 hover:underline">Delete</button>
+                        <button class="text-red-600 hover:underline" data-user-id="{{ $subject->id }}"
+                            data-where-Delete="Subjects"
+                            onclick="openDeleteModal(this)">Delete</button>
                     </td>
                 </tr>
-
+                @empty
                 <tr>
-                    <td class="px-4 py-3">msantos</td>
-                    <td class="px-4 py-3">Maria Santos</td>
-                    <td class="px-4 py-3">CS Department</td>
-                    <td class="px-4 py-3 text-center space-x-2">
-                        <button class="text-blue-600 hover:underline">View</button>
-                        <button class="text-maroon hover:underline">Edit</button>
-                        <button class="text-red-600 hover:underline">Delete</button>
-                    </td>
+                    <td class="p-3 text-center text-gray-500" colspan="5">No Subject information is retrieved</td>
                 </tr>
+                @endforelse
             </tbody>
         </table>
-
+        {{$subjects->appends(request()->query())->links() }}
     </div>
 </div>
 
@@ -107,13 +104,15 @@
                 </button>
                 <button type="submit"
                     class="bg-maroon-500 text-white px-6 py-2 rounded-lg hover:bg-gold-500 hover:text-maroon transition">
-                    Save User
+                    Add Subject
                 </button>
             </div>
 
         </form>
     </div>
 </div>
+
+@include('components/deleteModal')
 
 <!-- Modal Script -->
 <script>
